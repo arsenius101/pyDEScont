@@ -17,7 +17,7 @@ pyDEScont is an amateur project started in August 2020. Its purpose was to make 
 These have been the main desired changes from the past:
 1) Initialization of system data from an MS Excel file, instead of manual input inside the script itself (on an obscure txt file). **DONE. A sample input file has been included in the input_files folder. Moreover, at startup pyDEScont provides a GUI dialog box to select the system input file.**
 2) Parallelization and general script optimization in order to save computation time. **DONE. Although this is far from an accurate benchmark (different machine, different OS), on the same system simulation, runtime is about 25% of the 2012 version mostly due to parallelization.**
-3) "Recyclable" system initialization module, in order to use the same input for a faster approximated analytical model. **Work in progress. At the moment, sysdef module has been separated from pyDEScont and will be used for the analytical method (AM) as well. When pyDEScont is validated, it will be used as a benchmark for the AM accuracy.
+3) "Recyclable" system initialization module, in order to use the same input for a faster approximated analytical model. **Work in progress. At the moment, sysdef module has been separated from pyDEScont and will be used for the analytical method (AM) as well. When pyDEScont is validated, it will be used as a benchmark for the AM accuracy.**
 
 ## Next steps
 
