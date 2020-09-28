@@ -36,9 +36,8 @@ class Simulation():
         Parameters:
         source       Source file path, required to set DURATION.
         """
-        self.DURATION = int(read_source("SIMULATION", 1, 1,
-                                        source_file = source,
-                                        rows_to_skip=1))
+        self.DURATION = int(read_source(source, "SIMULATION",
+                                        1, 1, rows_to_skip=2))
         self.TRANSITORY = int(self.DURATION/10)
         
         self.clock = 0
@@ -486,9 +485,8 @@ def overall_result(sim_data, output_file, multiple_branch):
     columns = ["Average", "CI 95% (±)"]
     # write summary results to an excel file
     # Default: write to system input file
-    write_output("SIM_RESULTS", results_array, index, columns,
-                 output_file = output_file,
-                 rows_to_skip=1)
+    write_output(output_file,"SIM_RESULTS", results_array, 
+                 index, columns, rows_to_skip=1)
 
 def sim_statistics(sim_data, output_file, system, n_runs, runtime):
     """
@@ -523,8 +521,7 @@ def sim_statistics(sim_data, output_file, system, n_runs, runtime):
         k = system.NUM_SERVERS
     else:
         k = 1
-    write_output("SIM_RESULTS", data_array, ind, cols,
-                 output_file = output_file,
+    write_output(output_file,"SIM_RESULTS", data_array, ind, cols,
                  rows_to_skip=2+(k+system.NUM_BUFFERS)+1)
     
     
@@ -535,7 +532,7 @@ def main():
     start = time.time()
     sys = System(source) ## system variables' initialization
     sim = []
-    NUM_RUNS = int(read_source("SIMULATION", 1, 1,source_file = source))
+    NUM_RUNS = int(read_source(source,"SIMULATION", 1, 1, rows_to_skip=1))
     np.random.seed(seed=1010)
     rand_seed = np.random.randint(1, 100000, NUM_RUNS)
     for r in range(NUM_RUNS):
