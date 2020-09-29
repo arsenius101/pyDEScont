@@ -2,8 +2,8 @@ import numpy as np
 import scipy.stats as ss
 import time
 import multiprocessing as mp
-from sysdef import System
-from excelIO import select_file, read_source, write_output
+from lib.sysdef import System
+from lib.excelIO import select_file, read_source, write_output
 
 class Simulation():
     """

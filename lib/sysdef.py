@@ -1,5 +1,5 @@
 import numpy as np
-from excelIO import read_source, select_file
+from lib.excelIO import read_source, select_file
 
 MAX_FLOWS = 100 ## Max number of inflows/outflows per server
 MAX_STATES = 100 ## Max number of Markov states per server
