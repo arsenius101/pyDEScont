@@ -35,9 +35,10 @@ class Server():
         ## Nominal flow rate for each state
         self.flowrate = read_source(source, sheet,
                                     1, MAX_STATES, rows_to_skip=5)
+        self.flowrate = self.flowrate[self.flowrate>=0]
 
         ## Length of flowrate array is the number of server states
-        self.num_states = int(self.flowrate.shape[1])
+        self.num_states = len(self.flowrate)
 
         ## Transition Matrix of the Markov Chain representing the server
         self.TM = read_source(source, sheet,
@@ -51,7 +52,7 @@ class Buffer():
             self.downstream = None
 
 class System():
-    def __init__(self, source):
+    def __init__(self,source):
         ## read all server data
         self.NUM_SERVERS = int(read_source(source,"NETWORK", 1, 1, rows_to_skip=1))
         self.M = []
@@ -76,6 +77,7 @@ class System():
             temp_B.capacity = B_mat[j][0]
             temp_B.upstream = B_mat[j][1]
             temp_B.downstream = B_mat[j][2]
+            temp_B.pred, temp_B.succ = [], []
             self.B.append(temp_B)
 
         ## assign percentage of inflow/outflow to each buffer's upstream/
@@ -85,13 +87,18 @@ class System():
         count_inflows = np.zeros((self.NUM_SERVERS,1),dtype=int)
         for j in range(self.NUM_BUFFERS):
             u = self.B[j].upstream-1 # reminder: M1 server has "0" index, etc.
-            d = self.B[j].downstream-1
-            
+            d = self.B[j].downstream-1            
             self.B[j].perc_up = self.M[u].outflow[count_outflows[u]]
             self.B[j].perc_down = self.M[d].inflow[count_inflows[d]]
             count_outflows[u] += 1
             count_inflows[d] += 1
-
+            for k in range(self.NUM_BUFFERS):
+                if(self.B[k].downstream == u+1):
+                    self.B[j].pred.append(k)
+                if(self.B[k].upstream == d+1):
+                    self.B[j].succ.append(k)
+            #print(j,":",self.B[j].pred, self.B[j].succ)
+                    
         ## identify network topology (input/output ports)
         for i in range(self.NUM_SERVERS):
             count_in = np.count_nonzero(B_mat[:,1] == i+1)

@@ -78,7 +78,7 @@ class Simulation():
         # if True, initialize all system variables for the simulation
         if first_iter == True:
             server.state = 0
-            server.curr_flowrate = float(server.flowrate[0,server.state])
+            server.curr_flowrate = float(server.flowrate[server.state])
             server.next_state = 0
             
             server.operations = 0
@@ -92,7 +92,7 @@ class Simulation():
         # else, update only curr_flowrate
         else:
             s = server.state
-            server.curr_flowrate = float(server.flowrate[0,s])
+            server.curr_flowrate = float(server.flowrate[s])
 
     def init_buffer(self, buffer):
         """
@@ -189,13 +189,13 @@ class Simulation():
                     system.M[i].operations = time_min
 
                     # required time considering current flowrate
-                    if system.M[i].flowrate[0,s] == 0:
+                    if system.M[i].flowrate[s] == 0:
                         duration = time_min
                     elif system.M[i].curr_flowrate == 0:
                         duration = float("inf")
                     else:
                         duration = float(system.M[i].operations *
-                                     (system.M[i].flowrate[0,s] /
+                                     (system.M[i].flowrate[s] /
                                        system.M[i].curr_flowrate))                        
 
                     event = ["M", i+1, s, next_s, self.clock + duration]
@@ -209,12 +209,12 @@ class Simulation():
                     s = int(system.M[i].state)
                     next_s = int(system.M[i].next_state)
                     
-                    if system.M[i].flowrate[0,s] > 0:
+                    if system.M[i].flowrate[s] > 0:
                         if system.M[i].curr_flowrate == 0:
                             duration = float("inf")
                         else:
                             duration = float(system.M[i].operations *
-                                     (system.M[i].flowrate[0,s] /
+                                     (system.M[i].flowrate[s] /
                                        system.M[i].curr_flowrate))
 
                         self.update_events(i, "M", system, duration)
@@ -248,10 +248,10 @@ class Simulation():
                 a = event[1]-1
                 if event[0] == "M":
                     s, next_s = event[2], event[3]
-                    if system.M[a].flowrate[0,s] > 0:
+                    if system.M[a].flowrate[s] > 0:
                         nr_ops = float((self.clock - self.prev_clock) *
                                    (system.M[a].curr_flowrate /
-                                     system.M[a].flowrate[0,s]))
+                                     system.M[a].flowrate[s]))
                         system.M[a].operations -= nr_ops
                         self.evaluate_statistics(system.M[a], event[0]) 
                                                     
