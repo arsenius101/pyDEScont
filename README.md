@@ -42,8 +42,8 @@ For any further enquiry, my contact e-mail is available in my GitHub profile det
 
 ## Bibliography
 
-**[1]** M. Bolognesi, M. Laudi (2012), _An integrated process-system model for the design and the performance evaluation of recycling systems_, Master of Science Thesis in Industrial Engineering, Politecnico di Milano, Supervisors: T. Tolio, M. Colledani. **Relevant chapter provided in "Case Studies" folder**
-**[2]** M. Colledani, S.B. Gershwin (2013), _A decomposition method for approximate evaluation of continuous flow multi-stage lines with general Markovian machines_, _Annals of Operations Research_ 209(1). [Full-text PDF from MIT website](http://web.mit.edu/manuf-sys/www/oldcell1/papers/colledani-gershwin-anor-2011.pdf)
+**[1]** M. Bolognesi, M. Laudi (2012), _An integrated process-system model for the design and the performance evaluation of recycling systems_, Master of Science Thesis in Industrial Engineering, Politecnico di Milano, Supervisors: T. Tolio, M. Colledani. **Relevant chapter provided in "Case Studies" folder**  
+**[2]** M. Colledani, S.B. Gershwin (2013), _A decomposition method for approximate evaluation of continuous flow multi-stage lines with general Markovian machines_, _Annals of Operations Research_ 209(1). [Full-text PDF from MIT website](http://web.mit.edu/manuf-sys/www/oldcell1/papers/colledani-gershwin-anor-2011.pdf)  
 **[3]** B. Tan, S.B. Gershwin (2007), _Modeling and Analysis of Markovian Continuous Flow Production Systems with a Finite Buffer: A General Methodology and Applications_, Technical Report ORC-381-07, Massachusetts Institute of Technology Operations Research Center Working Paper Series. [Full-text PDF from ResearchGate](https://www.researchgate.net/publication37997426_Modeling_and_Analysis_of_Markovian_Continuous_Flow_Production_Systems_with_a_Finite_Buffer_A_General_Methodology_and_Applications)
 
 
